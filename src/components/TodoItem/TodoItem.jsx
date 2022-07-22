@@ -17,6 +17,10 @@ const TodoItem = props => {
             setStatus('Renew')
             setText('Done')
             setColor('#675BF1')
+        }else {
+            setStatus('Start')
+            setText('New')
+            setColor('#04BE00')
         }
     }
     
