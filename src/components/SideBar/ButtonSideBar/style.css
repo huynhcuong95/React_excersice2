@@ -1,0 +1,21 @@
+.btn-task {
+    width: 150px;
+    height: 40px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #F88F14;
+    border: 1px solid #FFFFFF;
+    display: block;
+}
+@media screen and (max-width: 768px){
+    .btn-task{
+        width:133%;
+    }
+}

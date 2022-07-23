@@ -108,6 +108,7 @@ p {
     margin: 0 auto;
     /* padding: 38px 90px; */
     justify-content: space-between;
+    padding-left: 127px;
 }
 
 .main {
@@ -115,7 +116,7 @@ p {
     padding: 38px 90px;
 }
 
-button {
+.btn {
     width: 58px;
     height: 25px;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #5F87ED;
@@ -137,4 +138,11 @@ button span {
     text-align: center;
     color: #FFF4F4;
     display: block;
+}
+
+@media screen and (max-width: 768px) {
+    .content{
+        padding-left: 0;
+        margin-top: 10px;
+    }
 }
