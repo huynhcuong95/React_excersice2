@@ -139,7 +139,19 @@ button span {
     color: #FFF4F4;
     display: block;
 }
-
+.Doing,.Done,.New{
+    font-size: 14px;
+    font-weight: bold;
+}
+.Doing{
+    color: #F88F14;
+}
+.Done{
+    color: #675BF1;
+}
+.New{
+    color: #04BE00;
+}
 @media screen and (max-width: 768px) {
     .content{
         padding-left: 0;

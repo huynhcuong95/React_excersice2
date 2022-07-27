@@ -5,7 +5,7 @@ import FromUser from "../../FormUser/FromUser";
 const TodoButtonCreate = (props) => {
   return (
     <div>
-      <button onClick={props.click} className="btn-create">Button Create Add</button>      
+      <button onClick={props.clicka} className="btn-create">Create New Task</button>   
     </div>
   );
 };

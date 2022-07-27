@@ -4,7 +4,7 @@ import Style from "./style.css";
 const FromUser = (props) => {
   const [display, setdislay] = useState("block");
   return (
-    <div className="" style={{ display:display }}>
+    <div className="" style={{ display: props.status ? 'none' :'block' }}>
       <div id="myModal" className="modal">
         <div className="modal-content">
           <div className="modal-body">
@@ -28,7 +28,7 @@ const FromUser = (props) => {
                 ></textarea>
               </div>
               <button className="btn btn-from-add"><span>Add</span></button>
-            </form>
+            </form> 
           </div>
         </div>
       </div>

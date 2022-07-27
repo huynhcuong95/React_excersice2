@@ -1,9 +1,10 @@
 import logo from "./logo.svg";
 import "./App.css";
 import TodoList from "./components/TodoList/TodoList";
-import Header from "./components/TodoHeader/Header/Header";
 import { useEffect, useState } from "react";
 import BoxSideBar from "./components/SideBar/BoxSideBar/BoxSideBar";
+import Main from "./layout/main/main";
+import Header from "./layout/header/header";
 
 function App() {
   const [status,setstatus] = useState(true);
@@ -12,15 +13,8 @@ function App() {
   }
   return (
     <div className="main">
-      
-      {/* header */}
-      <Header  click={onHandle}/>
-      <BoxSideBar/>
-      {/* Task list */}
-      
-      <TodoList status={status} />
-      {/* siderbar */}
-    
+    <Header/>
+    <Main/>
     </div>
   );
 }
