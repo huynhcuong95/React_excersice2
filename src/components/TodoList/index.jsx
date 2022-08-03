@@ -4,7 +4,7 @@ import "./styles.scss";
 
 function TodoList() {
 
-  const tasksList = JSON.parse(localStorage.getItem("data"))| [];
+  const tasksList = localStorage.getItem("data")?JSON.parse(localStorage.getItem("data")): [];
 
   return (
     <ul className="tasks">
