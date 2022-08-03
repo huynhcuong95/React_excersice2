@@ -1,0 +1,45 @@
+.task {
+  height: 200px;
+  border-radius: 10px;
+  border: 2px solid var(--primary);
+  padding: 15px;
+  background-color: var(--white);
+
+  &__title,
+  &__status,
+  &__desc > p:first-child {
+    font-weight: bold;
+  }
+
+  &__break {
+    border: 1px solid var(--primary);
+  }
+
+  &__desc > p:last-child {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  /* <--- status color */
+  &__status {
+    &--new {
+      color: var(--green);
+    }
+    &--doing {
+      color: var(--orange);
+    }
+    &--done {
+      color: var(--primary);
+    }
+  }
+
+  &__select {
+    width: 130px;
+    height: 26px;
+    border-radius: 5px;
+    border: 1px solid var(--primary);
+    padding: 0 3px;
+  }
+}

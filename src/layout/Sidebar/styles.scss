@@ -1,0 +1,18 @@
+.sidebar {
+  width: 150px;
+  height: calc(100vh - 76px);
+  background-color: var(--orange);
+  flex: none;
+}
+.nav {
+  &__item {
+    padding: 5px 10px;
+    border-bottom: 2px solid white;
+
+    & > a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 24px;
+    }
+  }
+}
