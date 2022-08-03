@@ -1,13 +1,15 @@
 .pagination {
-  position: absolute;
-  bottom: 15px;
-  left: 50vw;
-  display: flex;
-  width: 150px;
-  height: 30px;
-  border-radius: 10px;
-  border: 1px solid var(--primary);
-  background-color: var(--white);
+  position: relative;
+    display: block;
+    bottom: 15px;
+    margin: auto;
+    margin-top: 30px;
+    display: flex;
+    width: 150px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid var(--primary);
+    background-color: var(--white);
 
   & > div {
     width: 30px;
