@@ -13,9 +13,13 @@ function App() {
         <Sidebar />
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home sort=''/> } />
+            <Route path="/new" element={<Home sort='new'/>  } />
+            <Route path="/doing" element={<Home sort='doing'/>  } />
+            <Route path="/done" element={<Home sort='done'/>  } />
             <Route path="/add" element={<TaskForm />}/>
           </Routes>
+          
         </main>
       </div>
     </div>

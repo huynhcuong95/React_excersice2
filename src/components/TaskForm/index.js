@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./styles.scss";
+import { useNavigate } from "react-router-dom";
 
 const TaskForm = (props) => {
+  let navigate = useNavigate();
+  let data1 = JSON.parse(localStorage.getItem("data")) || [];
+  let count = data1.length;
   const [formValue, setFormValue] = useState({
     title: "",
     author: "",
     description: "",
-    status: "New",
+    status: "new",
+    id : count,
   });
   const handleChangeFile = (e) => {
     console.log(e.target.value);
@@ -17,6 +22,7 @@ const TaskForm = (props) => {
     setFormValue({
       ...formValue,
       [e.target.name]: e.target.value,
+      
     });
   };
   function checkValue(val) {
@@ -31,20 +37,25 @@ const TaskForm = (props) => {
     else return false;
   }
   const handleChangeForm = (e) => {
+
     e.preventDefault();
+    
     if (
       formValue.title == "" ||
       formValue.author == "" ||
       formValue.description == ""
     ) {
-      alert("khong được để trống");
+      alert("không được để trống");
     } else if (checkValue(formValue.title)) {
       alert("trùng");
     } else {
+      
       let data1 = JSON.parse(localStorage.getItem("data")) || [];
       data1.push(formValue);
-      console.table(formValue);
+      // console.table(formValue);
       localStorage.setItem("data", JSON.stringify(data1));
+      count++;
+      navigate("/", { replace: true });
     }
   };
   return (

@@ -2,10 +2,11 @@ import React from "react";
 import Pagination from "../../components/Pagination";
 import TodoList from "../../components/TodoList";
 
-function Home() {
+function Home(props) {
+  const {sort} = props;
   return (
     <div>
-      <TodoList />
+      <TodoList sort={sort} />
       <Pagination />
     </div>
   );
