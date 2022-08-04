@@ -55,7 +55,7 @@ const TaskForm = (props) => {
       // console.table(formValue);
       localStorage.setItem("data", JSON.stringify(data1));
       count++;
-      navigate("/", { replace: true });
+      navigate("/examples-app", { replace: true });
     }
   };
   return (

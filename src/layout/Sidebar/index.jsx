@@ -9,16 +9,16 @@ function Sidebar() {
     <div className="sidebar">
       <ul className="nav">
         <li className="nav__item">
-          <Link to="/"> All Tasks</Link>
+          <Link to="examples-app/"> All Tasks</Link>
         </li>
         <li className="nav__item">
-          <Link to="/new">New Tasks</Link>
+          <Link to="examples-app/new">New Tasks</Link>
         </li>
         <li className="nav__item">
-          <Link to="/doing">Doing Tasks</Link>
+          <Link to="examples-app/doing">Doing Tasks</Link>
         </li>
         <li className="nav__item">
-          <Link to="/done">Done Tasks</Link>
+          <Link to="examples-app/done">Done Tasks</Link>
         </li>
       </ul>
     </div>

@@ -13,11 +13,11 @@ function App() {
         <Sidebar />
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<Home sort=''/> } />
-            <Route path="/new" element={<Home sort='new'/>  } />
-            <Route path="/doing" element={<Home sort='doing'/>  } />
-            <Route path="/done" element={<Home sort='done'/>  } />
-            <Route path="/add" element={<TaskForm />}/>
+            <Route path="examples-app/" element={<Home sort=''/> } />
+            <Route path="examples-app/new" element={<Home sort='new'/>  } />
+            <Route path="examples-app/doing" element={<Home sort='doing'/>  } />
+            <Route path="examples-app/done" element={<Home sort='done'/>  } />
+            <Route path="examples-app/add" element={<TaskForm />}/>
           </Routes>
           
         </main>
