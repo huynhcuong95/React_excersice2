@@ -26,7 +26,7 @@ function TodoItem({ item, value },props) {
           <p>{item.description}</p>
         </div>
 
-        <select className="task__select" onChange={changeStatus}>
+        <select className="task__select" onChange={changeStatus} value={status}>
           {ALL_STATUS.map((item, idx) => {
             return (
               <option key={idx} value={item}>
