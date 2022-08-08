@@ -4,8 +4,11 @@ import Home from "./layout/Home";
 import Sidebar from "./layout/Sidebar";
 import "./App.css";
 import TaskForm from "./components/TaskForm";
-
+import { useState } from "react";
 function App() {
+  let taskArr = [];
+  const [state,setState] =  useState(taskArr)
+
   return (
     <div className="App">
       <Header />

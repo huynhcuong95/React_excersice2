@@ -12,7 +12,7 @@ const TaskForm = (props) => {
     author: "",
     description: "",
     status: "new",
-    id : count,
+    id : data1.length,
   });
   const handleChangeFile = (e) => {
     console.log(e.target.value);
@@ -54,7 +54,6 @@ const TaskForm = (props) => {
       data1.push(formValue);
       // console.table(formValue);
       localStorage.setItem("data", JSON.stringify(data1));
-      count++;
       navigate("/React_excersice2", { replace: true });
     }
   };

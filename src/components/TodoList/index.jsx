@@ -1,25 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import TodoItem from "../TodoItem";
 import "./styles.scss";
+import { Box, List, Tag, ListItem, Divider } from "@chakra-ui/core";
 
 function TodoList(props) {
-  const {sort} = props;
-  const tasksListArr = localStorage.getItem("data")?JSON.parse(localStorage.getItem("data")): [];
-  let datashow = [];
-  if(sort==""){
-    datashow = tasksListArr;
-  }else {
-    datashow = tasksListArr.filter((e) => e.status==sort);
-  }
+  
+  //constructor
+  const { data } = props;
  
+  
   return (
-    <ul className="tasks">
-      {datashow.length && 
-
-        datashow.map((item, index) => (
-          <TodoItem item={item} idx={index} key={item.id} />
-        ))}
-    </ul>
+    <div>
+      <ul className="tasks">
+        { data && data.currentData().map((item, index) => (
+            <TodoItem item={item} key={item.id} idx={index} />
+          ))}
+      </ul>
+    </div>
   );
 }
 

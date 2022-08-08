@@ -1,16 +1,46 @@
-import React from "react";
-import "./styles.scss";
+// import React from "react";
+// import "./styles.scss";
 
-function Pagination() {
-  return (
-    <div className="pagination">
-      <div className="pagination__page">{"<"}</div>
-      <div className="pagination__page">1</div>
-      <div className="pagination__page">2</div>
-      <div className="pagination__page">3</div>
-      <div className="pagination__page">{">"}</div>
-    </div>
-  );
+// function Pagination() {
+//   return (
+//     <div className="pagination">
+//       <div className="pagination__page">{"<"}</div>
+//       <div className="pagination__page">1</div>
+//       <div className="pagination__page">2</div>
+//       <div className="pagination__page">3</div>
+//       <div className="pagination__page">{">"}</div>
+//     </div>
+//   );
+// }
+
+// export default Pagination;
+import React, { useState } from "react";
+import "./styles.scss";
+function usePagination(data, itemsPerPage) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const maxPage = Math.ceil(data.length / itemsPerPage);
+
+  function currentData() {
+    const begin = (currentPage - 1) * itemsPerPage;
+    const end = begin + itemsPerPage;
+    return data.slice(begin, end);
+  }
+
+  function next() {
+    setCurrentPage(currentPage => Math.min(currentPage + 1, maxPage));
+  }
+
+  function prev() {
+    setCurrentPage(currentPage => Math.max(currentPage - 1, 1));
+  }
+
+  function jump(page) {
+    const pageNumber = Math.max(1, page);
+    setCurrentPage(currentPage => Math.min(pageNumber, maxPage));
+  }
+
+  return { next, prev, jump, currentData, currentPage, maxPage };
 }
 
-export default Pagination;
+export default usePagination;
+
