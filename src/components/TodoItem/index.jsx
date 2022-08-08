@@ -23,7 +23,7 @@ function TodoItem({ item  }) {
   return (
     <li key={item.id}>
       <div className="task">
-        <p className="task__title">Titlqe: {item.title}</p>
+        <p className="task__title">Title: {item.title}</p>
         <p className="task__creator">Creator: {item.author}</p>
         <p className={`task__status task__status--${status.toLowerCase()}`}>
           Status: {status}

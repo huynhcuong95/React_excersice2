@@ -7,6 +7,7 @@ import TaskForm from "./components/TaskForm";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 function App() {
   let navi = useNavigate();
   let taskArr = [];
@@ -40,7 +41,6 @@ function App() {
 
         <main className="main-content">
           <Routes>
-          
             <Route
               path="React_excersice2/search"
               element={<Home dataSearch={data} />}
