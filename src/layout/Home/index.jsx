@@ -5,13 +5,12 @@ import { Pagination } from "@mui/material";
 import data from "../../common/data.json";
 
 function Home(props) {
-
   //construstor pros
-  const { sort } = props;
-  const [re,setRe]= useState(true)
+  const { sort,dataSearch,dataProp } = props;
+  
   // construs
   let [page, setPage] = useState(1);
-  let [dataNow, setData] = useState([]);
+  let [dataNow, setData] = useState(JSON.parse(localStorage.getItem("data")));
   const tasksListArr = localStorage.getItem("data")
     ? JSON.parse(localStorage.getItem("data"))
     : [];
@@ -28,17 +27,22 @@ function Home(props) {
     setPage(p);
     _DATA.jump(p);
   };
-  useEffect(() => {
-    datashow = sort==""? tasksListArr: tasksListArr.filter((e) => e.status == sort)
-    setData(datashow);
-    handleChange(1, 1);
 
-  }, [sort]);
+  console.log(_DATA);
 
   useEffect(()=>{
     datashow = sort==""? tasksListArr: tasksListArr.filter((e) => e.status == sort)
     setData(datashow);
   },[page])
+
+  useEffect(()=>{
+    dataSearch && setData(dataSearch);  
+  },[dataSearch])
+  useEffect(() => {
+    datashow = sort==""? tasksListArr: tasksListArr.filter((e) => e.status == sort)
+    setData(datashow);
+    handleChange(1, 1);
+  }, [sort]);
   return (
     <div>
       <TodoList data={_DATA} />

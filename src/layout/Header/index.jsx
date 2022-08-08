@@ -4,12 +4,13 @@ import Button from "../../components/Button";
 import SearchForm from "../../components/SearchForm";
 import { Link } from "react-router-dom";
 
-function Header() {
+function Header(props) {
+
   return (
     <div className="main-header">
       <Link to="React_excersice2/add">   <Button title="Create New Task" /></Link>
     
-      <SearchForm />
+      <SearchForm handle={props.handleSearch}  />
     </div>
   );
 }

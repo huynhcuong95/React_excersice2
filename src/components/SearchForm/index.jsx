@@ -2,10 +2,11 @@ import React from "react";
 import Button from "../Button";
 import "./styles.scss";
 
-function SearchForm() {
+function SearchForm(props) {
+
   return (
     <div className="search-form">
-      <input placeholder="Type something to search" />
+      <input onKeyUp={props.handle}  placeholder="Type something to search" />
       <Button title="Search" />
     </div>
   );
