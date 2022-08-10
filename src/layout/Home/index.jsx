@@ -3,22 +3,19 @@ import usePagination from "../../components/Pagination";
 import TodoList from "../../components/TodoList";
 import { Pagination } from "@mui/material";
 import data from "../../common/data.json";
+import { handleData } from "../../common/common";
 
 function Home(props) {
   //construstor pros
   const { sort,dataSearch,dataProp } = props;
   
+
+
+
   // construs
   let [page, setPage] = useState(1);
   let [dataNow, setData] = useState(JSON.parse(localStorage.getItem("data")));
-  const tasksListArr = localStorage.getItem("data")
-    ? JSON.parse(localStorage.getItem("data"))
-    : [];
-  let dataBackup = localStorage.getItem("data") ? [] : data;
-  dataBackup.forEach((e) => {
-    tasksListArr.push(e);
-  });
-  localStorage.setItem("data", JSON.stringify(tasksListArr));
+
   let datashow = [];
   const PER_PAGE = 5;
   const count = Math.ceil(dataNow.length / PER_PAGE);
@@ -28,10 +25,10 @@ function Home(props) {
     _DATA.jump(p);
   };
 
-  console.log(_DATA);
-
+  
+  // handleData(data) return data get and set local with key "data" 
   useEffect(()=>{
-    datashow = sort==""? tasksListArr: tasksListArr.filter((e) => e.status == sort)
+    datashow = sort==""? handleData(data): handleData(data).filter((e) => e.status == sort)
     setData(datashow);
   },[page])
 
@@ -39,10 +36,12 @@ function Home(props) {
     dataSearch && setData(dataSearch);  
   },[dataSearch])
   useEffect(() => {
-    datashow = sort==""? tasksListArr: tasksListArr.filter((e) => e.status == sort)
+    datashow = sort==""? handleData(data): handleData(data).filter((e) => e.status == sort)
     setData(datashow);
     handleChange(1, 1);
   }, [sort]);
+
+
   return (
     <div>
       <TodoList data={_DATA} />
