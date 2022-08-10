@@ -7,17 +7,30 @@ function TodoItem({ item  }) {
  
   const taskList = localStorage.getItem("data") ? JSON.parse(localStorage.getItem("data")):[];
   const [status, setStatus] = useState(item.status);
-  const changeStatus = (e) => {
-    const currentStatus = e.target.value;
-    setStatus(currentStatus);
+  const [items,setItems] = useState(item)
+  // const changeStatus = (e) => {
+  //   const currentStatus = e.target.value;
+  //   setStatus(currentStatus);
+  // };
+  const changeStatus = (todoStatus,currentID) => {
+    setItems({...items,status:todoStatus});
+    fetch(`http://localhost:3030/dataa/${currentID}`,{
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(items),
+    }).then((res)=>{console.log(res)}).catch((error) => {
+      console.log(error);
+    });
   };
   // taskList[item.id].status = status;
-  taskList.map((e,i) => {
-    if(e.id == item.id){
-      e.status =  status;
-    }
+  // taskList.map((e,i) => {
+  //   if(e.id == item.id){
+  //     e.status =  status;
+  //   }
     
-  });
+  // });
   localStorage.setItem('data',JSON.stringify(taskList));
 
   return (
@@ -34,7 +47,7 @@ function TodoItem({ item  }) {
           <p>{item.description}</p>
         </div>
 
-        <select className="task__select" onChange={changeStatus} value={status}>
+        <select className="task__select" onChange={() => changeStatus(status,item.id)} value={status}>
           {ALL_STATUS.map((item, idx) => {
             return (
               <option key={idx} value={item}>

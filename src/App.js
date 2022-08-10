@@ -7,23 +7,20 @@ import TaskForm from "./components/TaskForm";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 function App() {
-  
-
   let navi = useNavigate();
   let taskArr = [];
   // const [data, setData] = useState(JSON.parse(localStorage.getItem("data")));
 
-
   const [state, setState] = useState(taskArr);
   const [val, setVal] = useState();
-  const[data, setData]= useState([]);
+  const [data, setData] = useState([]);
 
-  useEffect(()=>{
-    fetch("http://localhost:3030/dataa").then((res)=>res.json()).then((dataa)=>setData(dataa))
-
-  },[])
+  useEffect(() => {
+    fetch("http://localhost:3030/dataa")
+      .then((res) => res.json())
+      .then((dataa) => setData(dataa));
+  }, []);
   console.log(data);
   function search(e) {
     setVal(e.target.value);
@@ -32,15 +29,14 @@ function App() {
     let temp = JSON.parse(localStorage.getItem("data")).filter((e) => {
       let isValid =
         e.title.toLowerCase().includes(valueTemp) ||
-        e.status.toLowerCase().includes(valueTemp) ;
+        e.status.toLowerCase().includes(valueTemp);
       if (isValid) {
         return e;
       }
     });
     console.log(temp);
-    setData(temp);  
+    setData(temp);
     navi("React_excersice2/search");
-
   }
 
   return (
