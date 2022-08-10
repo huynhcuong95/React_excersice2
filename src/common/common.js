@@ -12,3 +12,8 @@ export function handleData(data) {
   localStorage.setItem("data", JSON.stringify(tasksListArr));
   return tasksListArr;
 }
+// export const make()=>{
+//   let a="";
+//   let e="qwertyuiopasdfghjklzxcvbnm,1234567890--";
+  
+// }

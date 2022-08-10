@@ -5,7 +5,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { createTheming } from '@callstack/react-theme-provider';
-const { ThemeProvider, withTheme, useTheme } = createTheming();
+
+const { ThemeProvider, withThemime, useTheme } = createTheming();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -12,7 +12,7 @@ const TaskForm = (props) => {
     author: "",
     description: "",
     status: "new",
-    id : data1.length,
+    id: data1.length,
   });
   const handleChangeFile = (e) => {
     console.log(e.target.value);
@@ -22,7 +22,6 @@ const TaskForm = (props) => {
     setFormValue({
       ...formValue,
       [e.target.name]: e.target.value,
-      
     });
   };
   function checkValue(val) {
@@ -36,33 +35,39 @@ const TaskForm = (props) => {
     if (a > 0) return true;
     else return false;
   }
-  const handleChangeForm = (e) => {
 
-    e.preventDefault();
-    
-    if (
-      formValue.title == "" ||
-      formValue.author == "" ||
-      formValue.description == ""
-    ) {
-      alert("không được để trống");
-    } else if (checkValue(formValue.title)) {
-      alert("trùng");
-    } else {
-      
-      let data1 = JSON.parse(localStorage.getItem("data")) || [];
-      data1.push(formValue);
-      // console.table(formValue);
-      localStorage.setItem("data", JSON.stringify(data1));
-      navigate("/React_excersice2", { replace: true });
-    }
+  const handleChangeForm = () => {
+    console.log(formValue);
+
+    // if (
+    //   formValue.title == "" ||
+    //   formValue.author == "" ||
+    //   formValue.description == ""
+    // ) {
+    //   alert("không được để trống");
+    // } else if (checkValue(formValue.title)) {
+    //   alert("trùng");
+    // } else {
+
+    // data1.push(formValue);
+    fetch("http://localhost:3030/dataa", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formValue),
+    })
+      .then((res) => res.json())
+      .catch((error) => {
+        console.log(error);
+      });
+
+    navigate("/React_excersice2", { replace: true });
+    // }
   };
+
   return (
-    <form
-      onSubmit={handleChangeForm}
-      method="GET"
-      className="formClassContainer"
-    >
+    <form onSubmit={handleChangeForm} className="formClassContainer">
       <div className="inputText">
         <label>Tittle: </label>
         <input
@@ -90,7 +95,7 @@ const TaskForm = (props) => {
           value={formValue.description}
         ></input>
       </div>
-      <button onClick={handleChangeForm} className="buttonClass">
+      <button type="submit" className="buttonClass">
         Save
       </button>
     </form>

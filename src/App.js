@@ -9,12 +9,22 @@ import { useNavigate } from "react-router-dom";
 
 
 function App() {
+  
+
   let navi = useNavigate();
   let taskArr = [];
-  const [data, setData] = useState(JSON.parse(localStorage.getItem("data")));
+  // const [data, setData] = useState(JSON.parse(localStorage.getItem("data")));
+
+
   const [state, setState] = useState(taskArr);
   const [val, setVal] = useState();
-  
+  const[data, setData]= useState([]);
+
+  useEffect(()=>{
+    fetch("http://localhost:3030/dataa").then((res)=>res.json()).then((dataa)=>setData(dataa))
+
+  },[])
+  console.log(data);
   function search(e) {
     setVal(e.target.value);
     let valueTemp = e.target.value.toLowerCase().trim();

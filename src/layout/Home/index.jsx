@@ -14,7 +14,7 @@ function Home(props) {
 
   // construs
   let [page, setPage] = useState(1);
-  let [dataNow, setData] = useState(JSON.parse(localStorage.getItem("data")));
+  let [dataNow, setData] = useState( JSON.parse(localStorage.getItem("data"))||[]);
 
   let datashow = [];
   const PER_PAGE = 5;
