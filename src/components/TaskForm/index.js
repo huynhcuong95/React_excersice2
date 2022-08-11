@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./styles.scss";
 import { useNavigate } from "react-router-dom";
-
+import {URL} from "../../constants"
 const TaskForm = (props) => {
   let navigate = useNavigate();
-  let data1 = JSON.parse(localStorage.getItem("data")) || [];
-  let count = data1.length;
+  // let data1 = JSON.parse(localStorage.getItem("data")) || [];
+  // let count = data1.length;
   const [formValue, setFormValue] = useState({
     title: "",
     author: "",
     description: "",
     status: "new",
-    id: data1.length,
+    // id: data1.length,
   });
   const handleChangeFile = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     //get name
 
     // const title = setTitleValue(e.target.value)
@@ -36,9 +36,9 @@ const TaskForm = (props) => {
     else return false;
   }
 
-  const handleChangeForm = () => {
-    console.log(formValue);
-
+  const handleChangeForm = (e) => {
+    // console.log(formValue);
+    // e.preventDefault();
     // if (
     //   formValue.title == "" ||
     //   formValue.author == "" ||
@@ -50,17 +50,19 @@ const TaskForm = (props) => {
     // } else {
 
     // data1.push(formValue);
-    fetch("http://localhost:3030/dataa", {
+
+
+    // Call post API
+    // console.log(formValue);
+    fetch(URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formValue),
     })
-      .then((res) => res.json())
-      .catch((error) => {
-        console.log(error);
-      });
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
 
     navigate("/React_excersice2", { replace: true });
     // }
@@ -68,37 +70,30 @@ const TaskForm = (props) => {
 
   return (
     <form onSubmit={handleChangeForm} className="formClassContainer">
-      <div className="inputText">
-        <label>Tittle: </label>
-        <input
-          type="text"
-          name="title"
-          onChange={handleChangeFile}
-          value={formValue.title}
-        ></input>
-      </div>
-      <div className="inputText">
-        <label>Author</label>
-        <input
-          type="text"
-          name="author"
-          onChange={handleChangeFile}
-          value={formValue.author}
-        ></input>
-      </div>
-      <div className="inputText">
-        <label>Description</label>
-        <input
-          type="text"
-          name="description"
-          onChange={handleChangeFile}
-          value={formValue.description}
-        ></input>
-      </div>
-      <button type="submit" className="buttonClass">
-        Save
-      </button>
+      <label>Title: </label>
+      <input
+        type="text"
+        name="title"
+        value={formValue.title}
+        onChange={handleChangeFile}
+      ></input>
+      <label>Author: </label>
+      <input
+        type="text"
+        name="author"
+        value={formValue.author}
+        onChange={handleChangeFile}
+      ></input>
+      <label>Description: </label>
+      <input
+        type="text"
+        name="description"
+        value={formValue.description}
+        onChange={handleChangeFile}
+      ></input>
+      <button type="submit">Save</button>
     </form>
+    
   );
 };
 
