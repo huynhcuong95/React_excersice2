@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./styles.scss";
 import { useNavigate } from "react-router-dom";
-import {URL} from "../../constants"
+import { URL } from "../../constants";
 const TaskForm = (props) => {
   let navigate = useNavigate();
   // let data1 = JSON.parse(localStorage.getItem("data")) || [];
@@ -51,7 +51,6 @@ const TaskForm = (props) => {
 
     // data1.push(formValue);
 
-
     // Call post API
     // console.log(formValue);
     fetch(URL, {
@@ -70,30 +69,37 @@ const TaskForm = (props) => {
 
   return (
     <form onSubmit={handleChangeForm} className="formClassContainer">
-      <label>Title: </label>
-      <input
-        type="text"
-        name="title"
-        value={formValue.title}
-        onChange={handleChangeFile}
-      ></input>
-      <label>Author: </label>
-      <input
-        type="text"
-        name="author"
-        value={formValue.author}
-        onChange={handleChangeFile}
-      ></input>
-      <label>Description: </label>
-      <input
-        type="text"
-        name="description"
-        value={formValue.description}
-        onChange={handleChangeFile}
-      ></input>
-      <button type="submit">Save</button>
+      <div className="inputText">
+        <label>Title: </label>
+        <input
+          type="text"
+          name="title"
+          value={formValue.title}
+          onChange={handleChangeFile}
+        ></input>
+      </div>
+      <div className="inputText">
+        <label>Author: </label>
+        <input
+          type="text"
+          name="author"
+          value={formValue.author}
+          onChange={handleChangeFile}
+        ></input>
+      </div>
+      <div className="inputText">
+        <label>Description: </label>
+        <input
+          type="text"
+          name="description"
+          value={formValue.description}
+          onChange={handleChangeFile}
+        ></input>
+      </div>
+      <div className="inputText">
+        <button type="submit" className="buttonClass">Save</button>
+      </div>
     </form>
-    
   );
 };
 
